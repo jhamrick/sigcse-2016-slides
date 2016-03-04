@@ -72,7 +72,7 @@ env.Alias("slides", "sigcse-2016.slides.html")
 ## for github pages
 env.Command(
     "index.html",
-    ["sigcse-2016.slides.html", "images", "custom.css", "reveal.js", "example/Assignment.html"],
+    ["sigcse-2016.slides.html", "images", "custom.css", "reveal.js", "example/Assignment.html", "perceptron/Perceptron Demo.html"],
     make_gh_pages)
 
 env.Alias("gh-pages", "index.html")
