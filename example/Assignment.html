@@ -1,64 +1,10 @@
-
 <!DOCTYPE html>
 <html>
-<head>
-
-<meta charset="utf-8" />
-<meta http-equiv="X-UA-Compatible" content="chrome=1" />
-
-<meta name="apple-mobile-web-app-capable" content="yes" />
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-
-<title>sigcse-2016 slides</title>
+<head><meta charset="utf-8" />
+<title>Assignment</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-<!-- General and theme style sheets -->
-<link rel="stylesheet" href="reveal.js/css/reveal.css">
-<link rel="stylesheet" href="reveal.js/css/theme/simple.css" id="theme">
-
-<!-- If the query includes 'print-pdf', include the PDF print sheet -->
-<script>
-if( window.location.search.match( /print-pdf/gi ) ) {
-        var link = document.createElement( 'link' );
-        link.rel = 'stylesheet';
-        link.type = 'text/css';
-        link.href = 'reveal.js/css/print/pdf.css';
-        document.getElementsByTagName( 'head' )[0].appendChild( link );
-}
-
-</script>
-
-<!--[if lt IE 9]>
-<script src="reveal.js/lib/js/html5shiv.js"></script>
-<![endif]-->
-
-<!-- Loading the mathjax macro -->
-<!-- Load mathjax -->
-    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
-    <!-- MathJax configuration -->
-    <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-            displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
-            processEscapes: true,
-            processEnvironments: true
-        },
-        // Center justify equations in code and markdown cells. Elsewhere
-        // we use CSS to left justify single line equations in code cells.
-        displayAlign: 'center',
-        "HTML-CSS": {
-            styles: {'.MathJax_Display': {"margin": 0}},
-            linebreaks: { automatic: true }
-        }
-    });
-    </script>
-    <!-- End of mathjax configuration -->
-
-<!-- Get Font-awesome from cdn -->
-<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css">
 
 <style type="text/css">
     /*!
@@ -173,1014 +119,366 @@ if( window.location.search.match( /print-pdf/gi ) ) {
 
 <style type="text/css">
 /* Overrides of notebook CSS for static HTML export */
-.reveal {
-  font-size: 160%;
-  overflow-y: scroll;
+body {
+  overflow: visible;
+  padding: 8px;
 }
-.reveal pre {
-  width: inherit;
-  padding: 0.4em;
-  margin: 0px;
-  font-family: monospace, sans-serif;
-  font-size: 80%;
-  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+
+div#notebook {
+  overflow: visible;
+  border-top: none;
 }
-.reveal pre code {
-  padding: 0px;
-}
-.reveal section img {
-  border: 0px solid black;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0);
-}
-.reveal i {
-  font-style: normal;
-  font-family: FontAwesome;
-  font-size: 2em;
-}
-.reveal .slides {
-  text-align: left;
-}
-.reveal.fade {
-  opacity: 1;
-}
-.reveal .progress {
-  position: static;
-}
-div.input_area {
-  padding: 0.06em;
-}
-div.code_cell {
-  background-color: transparent;
-}
-div.prompt {
-  width: 11ex;
-  padding: 0.4em;
-  margin: 0px;
-  font-family: monospace, sans-serif;
-  font-size: 80%;
-  text-align: right;
-}
-div.output_area pre {
-  font-family: monospace, sans-serif;
-  font-size: 80%;
-}
-div.output_prompt {
-  /* 5px right shift to account for margin in parent container */
-  margin: 5px 5px 0 0;
-}
-div.text_cell.rendered .rendered_html {
-  /* The H1 height seems miscalculated, we are just hidding the scrollbar */
-  overflow-y: hidden;
-}
-a.anchor-link {
-  /* There is still an anchor, we are only hidding it */
-  display: none;
-}
-.rendered_html p {
-  text-align: inherit;
+
+@media print {
+  div.cell {
+    display: block;
+    page-break-inside: avoid;
+  } 
+  div.output_wrapper { 
+    display: block;
+    page-break-inside: avoid; 
+  }
+  div.output { 
+    display: block;
+    page-break-inside: avoid; 
+  }
 }
 </style>
 
 <!-- Custom stylesheet, it must be in the same directory as the html file -->
 <link rel="stylesheet" href="custom.css">
 
-</head>
-
+<!-- Loading mathjax macro -->
+<!-- Load mathjax -->
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+    <!-- MathJax configuration -->
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+            processEscapes: true,
+            processEnvironments: true
+        },
+        // Center justify equations in code and markdown cells. Elsewhere
+        // we use CSS to left justify single line equations in code cells.
+        displayAlign: 'center',
+        "HTML-CSS": {
+            styles: {'.MathJax_Display': {"margin": 0}},
+            linebreaks: { automatic: true }
+        }
+    });
+    </script>
+    <!-- End of mathjax configuration --></head>
 <body>
-<div class="reveal">
-<div class="slides">
-<section><section>
+  <div tabindex="-1" id="notebook" class="border-box-sizing">
+    <div class="container" id="notebook-container">
+
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Creating-and-Grading-Assignments-in-the-IPython/Jupyter-Notebook">Creating and Grading Assignments in the IPython/Jupyter Notebook<a class="anchor-link" href="#Creating-and-Grading-Assignments-in-the-IPython/Jupyter-Notebook">&#182;</a></h1>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="images/jupyter.svg" style="height: 200px" /></p>
-<p><strong>Jess Hamrick</strong><br>
-UC Berkeley<br>
-Project Jupyter<br>
-@jhamrick</p>
+<p>The idea of reasoning by following simple rules provides an attractively straightforward characterization of cognition. However, production systems can be very difficult to design in ways that are guaranteed to always work. In this problem, you will write some functions to help you work with production systems, and then you will use those functions to reason about several different sets of rules.</p>
 
 </div>
 </div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="What-is-the-IPythonJupyter-notebook?">What is the <del>IPython</del>Jupyter notebook?<a class="anchor-link" href="#What-is-the-IPythonJupyter-notebook?">&#182;</a></h1>
-</div>
-</div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="images/jupyterpreview.png" alt=""></p>
+<h2 id="Part-A-(1-point)">Part A (1 point)<a class="anchor-link" href="#Part-A-(1-point)">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We will represent a set of beliefs using Python sets: each element in the set corresponds to a true proposition. For example, the following belief states that <code>'a'</code> and <code>'b'</code> are true propositions:</p>
 
 </div>
 </div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
 </div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="What-is-the-IPythonJupyter-notebook?">What is the <del>IPython</del>Jupyter notebook?<a class="anchor-link" href="#What-is-the-IPythonJupyter-notebook?">&#182;</a></h1>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<div style="margin-top: 75px">
-<h3>Live demo: <a href="https://try.jupyter.org/" target="new">try.jupyter.org</a></h3>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<div style="margin-top: 25px">
-<h3>Notebook viewer: <a href="http://nbviewer.org/" target="new">nbviewer.org</a></h3>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<div style="margin-top: 25px">
-<h3>Example notebook: <a href="perceptron/Perceptron Demo.html" target="new">Perceptron Demo</a></h3>
-</div>
-</div>
-</div>
-</div></section></section><section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nd">@interact</span>
-<span class="k">def</span> <span class="nf">plot_histogram</span><span class="p">(</span><span class="n">num_samples</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10000</span><span class="p">),</span> <span class="n">bins</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="n">normed</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-    <span class="n">rv</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="n">samples</span> <span class="o">=</span> <span class="n">rv</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">num_samples</span><span class="p">)</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="n">rv</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">normed</span><span class="o">=</span><span class="n">normed</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s1">&#39;r-&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">example_belief</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">}</span>
 </pre></div>
 
 </div>
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-
-
-<div class="output_png output_subarea ">
-<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAeQAAAFVCAYAAAA+OJwpAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
-AAALEgAACxIB0t1+/AAAIABJREFUeJzt3Xl4VNX9x/H3LMlMQoKADS6tilCxVVsU3KLSulFxQRRZ
-gmxV666lFXdbQCqNUsWlgjuyExVBkaIIiqj8sCoVBFTAQNgEQQiQZZJJZub3x0wmEyCZkGRy7sx8
-Xs/D4zlz7ySfK2G+ufeee44tEAgEEBEREaPspgOIiIiICrKIiIglqCCLiIhYgAqyiIiIBaggi4iI
-WIAKsoiIiAU4o+0QCAQYOXIka9asITU1ldGjR3PMMceEt0+cOJGZM2fSpk0bAEaNGkW7du1iFlhE
-RCQRRS3ICxcuxOv1kpeXx4oVK8jNzWX8+PHh7atXr2bMmDGcdNJJMQ0qIiKSyKIW5GXLltG1a1cA
-OnXqxKpVq2psX716NS+88AI7d+7k/PPP56abbopNUhERkQQW9R5ycXExmZmZ4b7T6cTv94f7l19+
-OQ8//DCTJ09m2bJlLF68ODZJRUREEljUgpyRkUFJSUm47/f7sdur3zZkyBBatWqF0+nk97//Pd98
-802dX08zdYqIiBwo6iXrzp07s2jRIrp3787y5cvp2LFjeFtxcTFXXHEF7777Lm63m88++4zevXvX
-+fVsNhs7dxY1PrlFZWVl6vjiWCIfXyIfG+j44l0yHF80UQtyt27dWLJkCTk5OQDk5uYyd+5cPB4P
-ffr04a677mLQoEG4XC6ys7P53e9+1/jkIiIiScZmYrWnRP8tSMcXvxL5+BL52EDHF++S4fii0cQg
-IiIiFqCCLCIiYgEqyCIiIhaggiwiImIBKsgiIiIWoIIsIiJiASrIIiIiFqCCLCIiYgEqyCIiIhag
-giwiImIBKsgiIiIWoIIsIiJiASrIIiIiFqCCLCIiYgEqyCIiIhaggiwiImIBKsgiIiIWoIIsIiJi
-AU7TAUQktnw+HwUF6ykszGD37uIDtrdr1x6Hw2EgmYhEUkEWSXAFBevJzu5S6/alS5fRocMJzZhI
-RA5Gl6xFREQsQAVZRETEAlSQRURELEAFWURExAJUkEVERCxABVlERMQCVJBFREQsQAVZRETEAlSQ
-RURELEAFWURExAJUkEVERCxABVlERMQCVJBFREQsQAVZRETEAlSQRURELEAFWURExAJUkEVERCxA
-BVlERMQCVJBFREQsQAVZRETEAlSQRURELEAFWURExAJUkEVERCxABVlERMQCVJBFREQsQAVZRETE
-AlSQRURELEAFWURExAJUkEVERCxABVlERMQCVJBFREQsQAVZRETEApymA4hI4/h8PgoK1te6fdOm
-jc2YRkQaSgVZJM4VFKwnO7uL6Rgi0khRL1kHAgFGjBhBTk4OgwcPZvPmzQfdb/jw4YwdO7bJA4qI
-iCSDqAV54cKFeL1e8vLyGDZsGLm5uQfsk5eXx9q1a2MSUEREJBlEvWS9bNkyunbtCkCnTp1YtWpV
-je1fffUVK1euJCcnh/Xra7+PJSLNywVk1bItAGwD/M0XR0SiiFqQi4uLyczMrH6D04nf78dut7Nz
-506effZZxo8fz7x58+r9TbOyMqPvFMd0fPEt3o6vsDCjRv8w4D7gz0CLOt63DXgEaJORGnfHXJtE
-OY7a6PgSW9SCnJGRQUlJSbhfVYwB3nvvPfbs2cONN97Izp07KS8vp3379lx11VV1fs2dO4saGdu6
-srIydXxxLB6Pb/fuYgDSgDuA+4E29XjfUcA4oOyS7uz720jKe/UBe/w+CRmPf3eHQscX3+rzy0bU
-gty5c2cWLVpE9+7dWb58OR07dgxvGzRoEIMGDQJg9uzZbNiwIWoxFpEmVlnJjcAI4Of7bdoJlB3k
-LS0JnkkDuH/Yivu2GykZO4bNt97BnuxzwWbD5/MBNhyOgxfpdu3a43A4muggRCRqQe7WrRtLliwh
-JycHgNzcXObOnYvH46FPnz4xDygitUudN5dOwx/gxf1eXwf8DXiD4P3i/bmB24AHgcNDr7X4fh2/
-GjaUj4G7gGVRvvfSpcvo0OGEhocXkRpsgUDgYP9eYyrRL0vo+OJXPB1f2kvPkfHQfTVe2wY8DLwC
-VNbja7QE7gH+Ss37zWXA5cCHdbzXagU5nv7uGkLHF9/qc8k6fm8YiSQx95SJNYrxHuAB4JfAC9Sv
-GAPsA/4OdCB4P7mi6usDc4BzmiiviESngiwSZ1xv5JFx99Bwv+g3negAPAqUNvBr/khwQNhvgKqp
-f1oA7wKnNzyqiBwCFWSROJL6zltk3nkLttCdpopOp/Hd2KfZ3URffw1wEbA91G8JzCdYqEUktlSQ
-ReJE6oL3aHnz9dj8wek8Kn99Mntfm4Uvo2mf3VwHXAz8FOq3ARYCJzbpdxGR/akgi8QBx6IPyLxu
-ILbK4N1hz7HHseLxJ/m+cHdMVnNaDfyB4L1pgLbAB0D7Jv9OIlJFqz2JWJzzs6W0HNIfu9cLwHqg
-66aN/HD5H2L6fb8CLgUWABkEn3H+APgd1feZRaTp6AxZxMLsWzZz2MC+OMqC03tsJniP94dm+v6f
-AT0AT6jfDvgPkNpM318kmaggi1hVIEDmXXdi37cXCA60uggoaOYYHwFXA95Q/zfA8GbOIJIMVJBF
-LMo9bTKpHwWn5gjYbPQiOODKhPkEJw+pch/Q4ttvDKURSUwqyCIWZN+ymRbDHwz3t+UMYKnBPADP
-AYtCbSfQ4ZGRUF5uLI9IotGgLpFm5PP5KCiofd3wdu3a47DbyRz2Z+zFwWkEKzv8ks033QozpjZX
-zIMKADcAKwlOGpK+Pp/A2McofUAXsEWaggqySDMqKFhPdnaXWrcvXbqMk//7GamLPgCCl6qLnhpP
-wO1uroh12kDwcvWzoX76M0/ivawHlZ1OM5hKJDHokrWIhaTu+JEWf38g3PfcdBuVZ51tMNGBxgOL
-Q22bz0fmn28Fr7eut4hIPaggi1jI8Y+Oxl60D4DK9h0oeeDvhhMdKABcD/hCZ+3Ob78hfewYo5lE
-EoEKsohF/BFovXQJUH2pmvR0o5lqsx7YdNud4X7600/g/Hq5uUAiCUAFWcQCfg48GdHf3rc/a7J+
-Rn7+OvLz18VkeszG+vGavnjPDi7QaPP5yLxTl65FGkODukQs4DmgVaj9PfDb16bjeW26wUT1YLdT
-9NQ42lxwDjaPB+e3q0l/+glK73kg+ntF5AA6QxYx7AKC01MC+IHrqJ6q0ur87TtQ8tCIcD993NPY
-fvzRYCKR+KWCLGLYPyParwKfmgrSQJ4/3ULFKb8FwFZaSoun/mU4kUh8UkEWMehKoOqhpnLgYYNZ
-Gsxup/TB6tHg7smvYt9YYC6PSJxSQRYxxA48EtEfT3wta7hp08bwoLNv2x3Pvk6nAmCrqCB9zD+j
-vFtE9qdBXSKG9Ce4chJAMZBrMEtD9OvXq0b/POCTUNs98zU8d/4V369+3ey5ROKVzpBFDEih5uXp
-scBOQ1mayqfAvFDbFgjQ4tFH6tpdRPajgixiwA1Ah1B7F/CEwSxN6aGItmveOzi/WmYsi0i8UUEW
-aWZpQOSEmI8C+wxlaWrLgdci+i1GjzIVRSTuqCCLNLM7gKND7R+AcQazxMJwIOBwAJD68SJSPllc
-9xtEBFBBFmlWjuIi7o/ojyJ+JgGpr7XAzsuuCPdb/PNhCATMBRKJEyrIIs3oqGlTaBNq5wMTTIaJ
-oS3X30ggNRWAlGVfkjr/XcOJRKxPBVmkmdh27uSoiPmphwMV5uLElPfIo/Bc96dwv0XuKPD5DCYS
-sT4VZJFmkv7MEzg8wQvUK4E8s3FirvTPwwiktwCCaya7Zs80nEjE2lSQRZqBbfcu0ia/Gu4/RHAh
-iUQWyMqi9Jbbw/30fz+pe8kidVBBFmkGaZMmYAudHS8H3jEbp9l4brm9xllyyqIPDCcSsS4VZJFY
-Ky/H/cqL4W6iTAJSH4FWrfEMGBTupz/3b4NpRKxNBVkkxlyz3sCxI7hGsPdnWTUmzkgGnptuI2AP
-ftSkLl6EY/Uqw4lErEkFWSSWAoEaZ4Xb++Yk7Mjq2viPa4f38ivD/fTnnzWYRsS6VJBFYihl0UKc
-330LQCC9BT/27BXlHYmp9NY7wm3XrDewb99mMI2INakgi8RQ+vjqs0HPwMH4WrY0mMacytPPpOLM
-s4HgeslpL79gOJGI9aggi8SIY9VKUj9eBEDAbsdz462GE5lVeuud4bZ70gQoLjaYRsR6VJBFYiTy
-Xmn5FT3xH9fOXBgL8Ha/DF+74wGw792DO2+q4UQi1uI0HUAkEdm3b6sxM5Un4h5qMti0aeNBXy++
-pi/HP/EYAOkvjKfsuhshtDKUSLJTQRaJgbSXX8BWERxPXXHm2VR2OcNwoubVr9/BB6+lA3szW+Is
-2odjYwGp8+bi7dGzecOJWJQuWYs0teLi4D3SkMh7p8muFPixV+9wXxOFiFRTQRZpYu68qdj37gGg
-8vj2eLtfZjiRtWzv3bd6acYvP8f5+X8NJxKxBhVkkabk85H+/Phw13Pz7bpHup+Kn2VRdk3fcF9n
-ySJBKsgiTSh13js4NhUA4G/dmrKcAWYDWZTnlupBbqnz3sG+Yb3BNCLWoIIs0oQiJ7zw/PEGSE83
-mMa6fL8+Ce8FFwFgCwRIm/CS4UQi5mmUtUgD+Hw+CgpqntWlbVhP1tIlAAQcjuAjPVKr0ptvIzW0
-HKP79emUPDgc0tIMpxIxRwVZpAEKCtaTnd2lxmtPAZ1C7d2/Ox//kUc1e654UnH+RfiObYdjUwH2
-wkJc77xFed/+pmOJGKOCLNIE0oEhEf2V53bFnb/ugP1qmzAjKdnteAZfR8YjIwBIm/iKCrIkNRVk
-kSbQD2gVaq8FLnxkJIFHRpqKEzfK+g+kxWOPYKuoIOXLz3GsWonvlN+YjiVihAZ1iTSBWyLaLwAB
-U0HiTCAri/IrqtdKTps8oY69RRKbCrJII3UGzgy1y4BJBrPEo7IhN4Tbrjdew1ZcZDCNiDkqyCKN
-dHNE+w1gl6kgcaoi+1wqT+gIgL2kGNesmVHeIZKYohbkQCDAiBEjyMnJYfDgwWzevLnG9vnz59O7
-d2/69u3L5MmTYxZUxIpaAtdG9J83FSSe2WyUDbk+3HVPmgABXfSX5BN1UNfChQvxer3k5eWxYsUK
-cnNzGT8+ODWg3+9n7NixzJo1i7S0NC677DKuvPJKWrVqFeWriiSGgUBGqL0S+D+DWeLFwUaaO844
-i84uF47yclJWrsD5vy+TboUskagFedmyZXTt2hWATp06sWrVqvA2u93Ou+++i91uZ9euXQQCAVJS
-UmKXVsRiIgdzPWcsRXypbWnGV4Cq8+S0SRMoUkGWJBP1knVxcTGZmZnhvtPpxO/3V38Bu50FCxbQ
-s2dPzjzzTNI1VaAkiXOAqgd0ioGpBrMkgsjL/a633sS2p9BYFhETop4hZ2RkUFJSEu77/X7s9pp1
-vFu3bnTr1o377ruPt956i6uvvrrOr5mVlVnn9nin44tv9Tm+wsKMGmfH0wGNDW6cL4D/ERy1bisr
-42fzZsPQoYf0NfSzGd8S/fiiiVqQO3fuzKJFi+jevTvLly+nY8eO4W3FxcXceuutvPLKK6SmppKW
-lobNZov6TXfuTNyPrqysTB1fHKvv8e1bv5k+Ef0Xat1TDsXzwIuhduW48RT2vw7q8ZkC+tmMd8lw
-fNFELcjdunVjyZIl5OTkAJCbm8vcuXPxeDz06dOHK6+8koEDB5KSksKJJ55Iz549G59cxOKy5s3F
-HWp/TvDMThpvBjA+vQXO0hKc69aSsnQJFeecZzqWSLOwBQLN/3xBov8WpOOLX/U6Pr+fjDN+S9rm
-TUBwINKrsY+WNLb16s2RoWeRy66+hqIX6vd/Vz+b8S0Zji8aTQwicohSPlkcLsZ7gNfMxkk4O666
-Jtx2zZ2DbccOg2lEmo8Kssghck+rnhxzMlBqLkpCKj2hIxWnBycjtVVU4H4jz3AikeahgixyCGy7
-d+GaNzfcf8lglkTmGfTHcNs9fbJm7pKkoIIscghcs97A5vUCwcFcq+reXRqovMdV+FsE50BzrluL
-88vPDScSiT0VZJFD4J5ePf2HFgqMoYwMyq+qntHLPUPTrkjiU0EWqSfn18tJWfU1AP5UFzMM50l0
-ZdcOCrdds9+E4mKDaURiTwVZpJ7c06eE27suvIh9BrMkg8rTz6y5LOPctw0nEoktFWSR+vB4cL35
-Rri784orDYZJEjYbZf2rz5LTpml5V0lsKsgi9eB6dy72vXsA8B3Xjn2ndTGcKDmU9e1PwOEAIOW/
-S3HkrzOcSCR2VJBF6iFyMFdZ/4Fg1z+d5hBo2xZvt+7hvnvGNINpRGJLnyoiUdg3bST140UABGw2
-ynIGGE6UXMoGDA63Xa9Nh8pKg2lEYkcFWSQKd171WVnFBRfhP/rnBtMkH+9F3fC1PQIAx4/bSf1w
-geFEIrGhgixSF5+vRkH2RDyKI83E6aS8b/9w1z1tSh07i8QvFWSROqR8shjHls0A+Nu0wXvJZYYT
-JafIZ5JTF7ynBSckIakgi9TBPaP6bKysdz9wuQymSV6+X55AxZlnA2CrrMQ9U2tsSeJRQRapha1w
-d42FJMquHVzH3hJrnojBXVpwQhKRCrJILVyz3sBWXg5Axamn4TvpZMOJklt5j6sIpLcAwLl2Dc5l
-XxhOJNK0VJBFahE5eChyxigxJCODssgFJ6ZrcJckFhVkkYNwrlwRXkgi4HZT3qu34UQCNW8buGa/
-CSUlBtOINC0VZJGDcEUs91d+WQ8Ch7UymEaqVJ5xJpW/PAHQghOSeFSQRfZXXo77zdfD3TI9e2wd
-NhtlOQPDXfdr0w2GEWlaKsgi+0l9/z3shYUA+H5xDBXn/c5wIgHw+Xzk569jzZlnEQjNJZ766cds
-+XQx+fnr8Pl8hhOKNI7TdAARq3G/Vj0zV1nf/lpIwiIKCtaTnR1cZes/QNUULW/16sEoYM2aNbRu
-fZSpeCKNpk8akUjbt5P6QfVcyWX9rjUYRmozMaI9BLAZyiHSlFSQRSJNnYotdOnTe/Y5+I9vbziQ
-HMwcoDDUbg90NZhFpKmoIItUCQRg4sRwt6z/wNr3FaPKgcjhXNeZCiLShHQPWSTEueIrWL0agEB6
-Ot4ePQ0nSk6bNm2s1+sTgdtD7d7AtpISaB3LZCKxpYIsEuKOfPb4ip5UpqVTkL/uoPvWVjSk8fr1
-6xV9J+BLYDVwMpABZM6fDzf8MobJRGJLBVkEoKwM1+yZ1d3+A2uM6hVrehV4PNRuOWsWJTfcXtfu
-Ipame8gigGv+POx79gDgO/Y4KrLPNZxI6mMaUBlqp3/xBfYN603GEWkUFWQRwJWnZ4/j0XbgvYi+
-+/UZpqKINJo+dSTp2bdvI3XRB+G+nj2OL69GtN2vzwC/31gWkcZQQZak53o9D1vVh/j55+M/rp3R
-PHJo5gK7Qm3H5k2kLPnEZByRBlNBluQWCNSYKpPr9ERrvPESvJdcxZ03rbZdRSxNBVmSmnPZFzjX
-rQXA3yIDrrnGcCJpiIkRbdfct7EV7TMVRaTBVJAlqbnzqud7Kr/yKmjRwmAaaaivgPKOHQGweTy4
-5rxlNpBIA6ggS/LyeHC99Wa4W66pMuPa3oirG5GTvIjECxVkSVop/5mDfd9eAMp+/nO++9nPWLt2
-Lfn568jPX6fZuOJMUY8eBJzBuY5SPv8MRy2zrIlYlWbqkuT16svh5iNbtzL6nNMNhpHG8h1+ON6L
-L8H13n+A4O2IkodGGE4lUn86Q5akZN+ymcO+/BwAPzDJbBxpIpErdLlenwGhpTRF4oEKsiQl92vT
-sQUCACwEtpiNI01gw4YNfNf+eLyt2wDg2PYDP82YSn7+OnwqzBIHVJAl+fj9NZ5VfbWOXSV+dO/e
-nbO7ns2/C3eHX1t5151kZ3ehoEBzXIv1qSBL0klZugTHxgIACgE9IJNYIn/B6omWSJb4oYIsSSfy
-kZgZQJm5KBIDq4HPQ20XoJnJJV6oIEtSsRUX4Zr7drivy9WJKfLv9XpjKUQOjQqyJBXX27OxlZYC
-UNq+A18aziOxkUf1lY/OQHpoelQRK1NBlqTinj4l3N5xxZUGk0gs7QFmRfSz5s4xFUWk3jQxiCQ0
-n88XHmHr3lhA1hf/BcDvcLDilN+YjCYx9irV949/Nn8ee7xeSE01GUmkTirIktAKCtaTnd0FgH8C
-p4Zen+PzcfVNuruYyD4ENgHHAil795I6/128PXoaTiVSO12ylqTgAAZH9DWYK/HtPwObO08LToi1
-qSBLUvgD8PNQ+0dgnsEs0nwmRrRTP1iAffs2U1FEolJBlqRwXUR7ClBpKog0q/XAR6G2ze/H9Xqe
-wTQidVNBloTXBogcT63L1ckl8u/bnTcVQnOYi1hN1IIcCAQYMWIEOTk5DB48mM2bN9fYPnfuXPr2
-7cu1117LyJEjY5VTpMGuJThjEwRncPrGYBZpfjMBX3o6AM7v1+H88vO63yBiSNSCvHDhQrxeL3l5
-eQwbNozc3NzwtvLycp555hmmTp3K9OnTKSoqYtGiRTENLHKoIsdSTzCWQkwpBXZd1C3cj5w6VcRK
-ohbkZcuW0bVrVwA6derEqlWrwttSU1PJy8sjNfRsX2VlJS6X66BfR8SE9DXfclqoXUZwBidJPjsu
-r75p4Zr9JhQXG0wjcnBRC3JxcTGZmZnhvtPpxO/3A2Cz2WjTJrj26JQpU/B4PJxzzjkxiipy6I54
-e3a4PRPYay6KGFT8205UntARAHtJMe63Z0V5h0jzizoxSEZGBiUlJeG+3+/Hbq+u44FAgDFjxrBx
-40aeffbZen3TrKzM6DvFMR2fRZSU4Hv/vXD3JYNRxKy9+36isNfVZD32GADOiS9ReFnwMnaHDh1w
-OBwm49Vb3Pzba6BEP75oohbkzp07s2jRIrp3787y5cvp2LFjje1///vfcbvdjB8/vt7fdOfOokNP
-GieysjJ1fBbhmjGVlqFfJtcAH5uNIwZ1796dnwFbgVQgbcUKrjnxRFYBS5cuo0OHE8wGrId4+rfX
-EMlwfNFELcjdunVjyZIl5OTkAJCbm8vcuXPxeDycfPLJzJo1iy5dujBo0CBsNhuDBw/m4osvbnx6
-kUZKmzIx3H7ZXAyxiJ+A2UC/UP9GYKi5OCIHsAUCzf9QXqL/FqTjM8/x3be0+d1ZAHiBXwA7jSYS
-K7gIWBhqFwJHA4t0hmwJyXB80WhiEElI7qkTw+23UTGWoA8Jzt4F0Bq4xmAWkf2pIEviKSvD/Ub1
-A04azCVVAtS8fXGjqSAiB6GCLAnHNe8d7IWFAJQddXT4EqUIBKfSrJrL/PeAe9NGg2lEqmk9ZIkL
-Pp+PgoL1tW5v1659+NEV99TqRfd29uhJ4MXnYp5P4sd2YC5wVajfds5bcIEGoop5KsgSFwoK1pOd
-3aXW7VWPrtjX55P6afABp4DdHpyhSQVZ9vMS1QU5a9477HlsLIRmHBQxRZesJaGkTZscbnu7XUJF
-27YG04hVvQdULZOTUlhI6nytkC3mqSBL4qiowJ03LdwtG/hHc1nE0vzUXGgk8pl1EVNUkCVhpM5/
-F/vOHQD4jjwKb8QKPyL7m0CwMAOkLF6EXYO7xDAVZEkYaRHPHpddOxCcGiIhtdsEzA+1bYEA7umT
-69pdJOZUkCUhpG7bRsqiDwAI2GyUXTvYcCKJB5HPqLunT4XKylr3FYk1FWRJCG3/MwdbaBbYit9f
-gP/Y4wwnknjwDuBtHVxC1rF9G6kfLjAbSJKaCrLEPQeQNeetcN8zcIi5MBJXKoGfLu8R7rsnTah9
-Z5EYU0GWuNcTcIUGc/mz2uLtfrnZQBJXvjrjrHA7deH7bPl4Efn568jPX4fP5zOYTJKNCrLEvTsi
-2p5Bf9QED3JIrhh6G1VPIdsCARb27kl2dheys7vUOTucSFNTQZa4dhJwQagdcDgoG3K9yTgSp8ZF
-tG8A0kwFkaSmgixx7faItvfSK/AfdbSxLBK/3qN6WcY2QI7BLJK8VJAlbmUCgyL6nhtuMhVF4pwf
-GB/Rv722HUViSAVZ4tZggkUZoLR9ByrOOc9kHIlzEwBPqN0FOKuOfUViQQVZ4lbkWcyP1/QBm81Y
-Fol/hcD0iP4dte0oEiMqyBKXLgR+HWrvA3ZecpnBNJIoIgd39QFSdu8yFUWSkCb7lbgUefYyCThi
-10/489cdsN8mLRggh+ArYCmQDbgITThzxtlmQ0nSUEGWuHMMcGVEfxywpl8vQ2kk0TxLsCADHDH7
-TfaNeEQLlUiz0CVriTs3E5wuE2AhsMZgFkk8M4EdobZrx4+kzn/XZBxJIirIEldSgRsj+uNq21Gk
-gbzUXAUqbcKLpqJIktF1GIkrfYC2ofYmgqv1iDS154H7CV6JSf1kMVs/eJ+ydsfX2Kddu/Y4HI6D
-vV2kQVSQJa5EDuZ6HtDU/xILW4C3gaqRCZ/2782d++2zdOkyOnQ4oXmDSULTJWuJG12AqvGu5cDL
-BrNI4ou8HTKE6kloRGJFBVniRuQZyuvATlNBJCl8CHwbamcSLMoisaSCLHEhZccO+kf0nzWWRJJJ
-5M/ZX6ke3S8SCyrIEheOen0GVascfwp8bjKMJI2JQNVcXe2pvqcsEgsqyGJ5tqJ9tH3rzXD/Xwaz
-SHIppeYqUPeYCiJJQQVZLM89eSLOkhIAvkOPOknzehYoC7XPAH5vMIskNhVksTavl7QXq89RngAC
-5tJIEtpBcL70KjpLllhRQRZLc82eiWPbDwBsB6aYjSNJ6gnAH2pfDpxkMIskLhVksa5AgPTx/w53
-/03w+WOR5raO4EQhVe42FUQSmgqyWFbKog9wfrsaAF9aGs8ZziPJLXIw4QAgZaeehJempYIslpU+
-7plwe0ePnhQazCKyFFgSaqcCR74xw2AaSUQqyGJJzq+Xk/rJRwAEHA625wwwG0iEmmfJR8x+E1tx
-kbEsknhUkMWS0sZXnx2XX3kV5UcdbTCNSNAcqtffdhYX454yqa7dRQ6JCrJYhs/nIz9/HZs//RjX
-27PDr69KVUvgAAAWNklEQVS78mo2bdpoMJlIUIDgiOsqaS+Oh4oKU3Ekwaggi2UUFKwnO7sLH/e6
-ApsvuLDih8BvrxtIv36atFCsYQrBZ5MBHFu34IqYRU6kMVSQxVJaAX+K6GuaTLGaMoKP4FVJH/cM
-BDRdjTSeCrJYyh1ARqi9EnjPYBaR2owHfG43AM5vVpH6wftmA0lCUEEWy3AUFTEsoq+zY7Gq3cCO
-K68K99PH/FNnydJoKshiGUflTaNVqL0WmG4yjEgUPwz8IwGXC4CU5V+R+r6u50jjqCCLJdgKd3Nk
-XnUJfhjwmYsjElVFVhaeP94Q7qc/NlpnydIoKshiCWnPPYuzNLjE4jdAntk4IlFt2rSRb3v0xFd1
-lrzqa3ZPeJH8/HXk56/D59OvlHJonKYDiNh27SL9xeqZqkdSvbKOiFVVPYo3huolGcsfuIdzCD6v
-vHTpMjp0OMFQOolHOkMW49KffQpb6Ox4JTDTbByRQzIGKA61fwv0NphF4psKshhl27GDtAkvhvsj
-CJ5diMSLn6j5XPJI9MEqDaOfGzEq/d9PYvN4ACg54UTeMpxHpCEeB/aF2icB/QxmkfilgizG2Ldv
-I23SK+H+lhtv1tmxxKXdwFMR/REAlZVmwkjcUkEWY9KeGYutrAyAilNPo/C83xlOJNJwTwJ7Qu0T
-gZ/puWQ5RCrIYoT9h62kTX413C+97yGw2QwmEmmcPcDYiP4vJryklaDkkEQtyIFAgBEjRpCTk8Pg
-wYPZvHnzAft4PB769+/Phg0bYhJSEk/6k49j83oBqOhyBt4LuxlOJNJ4TxO8fA3g3roF9+szTMaR
-OBO1IC9cuBCv10teXh7Dhg0jNze3xvZVq1YxcODAgxZqkYOxb9qIe/rkcL9EZ8eSIPYRHOBVJX3s
-GCgvNxVH4kzUgrxs2TK6du0KQKdOnVi1alWN7RUVFYwfP5727dvHJqEknBajhmMLXcqrOCubit9f
-YDiRSNP5N8FHoQAcmzeRFjHpjUhdos7UVVxcTGZmZvUbnE78fj92e7CWn3baaUDw0nZ9ZWVlRt8p
-jun46rB4McyZHe6mjH2crLYtASgszKjtXSJxoxgYBTwT6qc/8Sg/XnIhvqys8D4dOnTA4XAc8tfW
-Z0tii1qQMzIyKCkpCfcji3FD7dxZ1Kj3W1lWVqaOrzY+H61vvzP8Q1fWqw9FJ/wGQl9v9+7i2t8r
-EkeeA24h+EyyvbSUxeedxw0R2xsyraY+W+JbfX7ZiFpZO3fuzOLFiwFYvnw5HTt2bHwySUruaZNx
-rl4JQCA9nZLhowwnEomNSuCvEf3rgdMNZZH4EfUMuVu3bixZsoScnBwAcnNzmTt3Lh6Phz59+oT3
-s2lQjtTBtncPLXKrC3DpnX/Ff/TPDSYSia33gTnAlaH+08C55uJIHIhakG02Gw8//HCN144//vgD
-9ps8efIBr4lUSX/8Mey7dgHg+8UxlN72Z8OJRGJvGNAdSAXOAfoDehBKaqPlFyXmHOvWkvbKC+F+
-/s23sfuHLQfst2nTxuaMJRJz3xOcUvPeUP8x4G1zccTiVJAl5loMfwBbaF7ffaeexol/fwD+/oDh
-VCLN4xFgCHAEcAzVxVlkf5o6U2IqdeF8XB8sACBgs1Hwl7sNJxJpXkVA5K+f9wKp27YZSiNWpoIs
-seP10iLiTLhs4BBKT/yVwUAiZkwEvgy104Djxj1tLoxYlgqyxEzaKy/izP8eAH9mS0ru/7vhRCJm
-BIChEf3DP1hAytIlpuKIRakgS0zYt28j/YnHwv3Su+8nEDFTkUiy+T9gekQ/44F7tBqU1KCCLE0v
-ECBj2J+x79sLQGWHX+K54SbDoUTMuw8oDbWd36wi/anH69pdkowKsjQ512vTcS2YH+4XP/40pKYa
-TCRiDVuAv0X005/8F46VX5uKIxajx56kSQW2bCb9wXvC/W19+rHxyCMhfx2gZ41FngZG/rYTLb9e
-ga2ykpZ33kLh+x9Baio+n4+CgvUHfV9hYQYtW7Zt0KIUEh9sgUNZpqmJJPoE4kl7fIEAzqsuo3Vo
-sMr3QCeqL9GJSNBXr8+m05BrsXk8AJTcdS+l9/+N/Px1ZGd3qfV9DVmUIl4kw2dnNLpkLU3GPWNq
-uBj7getQMRY5mLJjjqXkoRHhfvrTT+D8ernBRGIFKsjSJOxbt9R45vgZ4FNzcUQsz/OnW/CefQ4A
-Np+PzDtvweb1Gk4lJqkgS+MFAmTedSf2on0ArAMeNJtIxPrsdoqeGkcgPR0A57ff8IsJLxkOJSap
-IMsh8/l85OevC//Z99S/SF30ARCcHvOPgMdoQpH44G/fgeK/jQz3j546SesmJzGNspZDVlCwPjzw
-5BhgVcS2sYEA/2cklUj8qPG0we8v4KTTutDyq2XYfD4mAl2A8mjv20+7du01AjvOqSBLg9mBV4GW
-of4aaj5jKSIH169frxr944GvgQzgZIIrRN1z4NsOeF+kRB6BnSx0yVoa7BHgolDbB/wRKDOWRiR+
-baDmsox3A9cYyiLmqCBLg/Si5pJyo4HPDGURSQTPA/+J6E8ETjITRQxRQZZDlrZhPRMj+vOAhw1l
-EUkUAWAgwQl1IHj5ejZwmLFE0txUkOXQ7N1Lx/uGUTXnzPfAAIITgYhI4+wBrgJKQv2OwBTAZiyR
-NCcVZKk/vx8GDyZt8yYg+KHRi+CHiIg0jdXA9RH9HmiwZLJQQZZ6S3/yXzBnTrh/A7DSXByRhPU6
-ELkw40jgMjNRpBmpIEu9pC6cT/qYf4b7TwCvmYsjkvDuBz4Ite3ANOCX5uJIM1BBlqjs6/PJvOVP
-2EILg+3tcjr3Gc4kkuh8QA5QNRVIK4KDvFoYSySxpoIsdbL9+COHXdsb+769wReOOYZ1/3gUn9lY
-IknhJ4LjNKqe7z8FmAmkGksksaSCLLWy7d5Fqz5X4lyfD0DA5YJZs6hs3dpwMpHk8T/gloh+dyAP
-TbOYiFSQ5aD8hbtxX3UZzu++BSDgcLD24dGsbdmyzvl0RaTpTQJGRPSvJjhxiD7AE4t+yZIDlZSQ
-3rsnGaFi7AcG+Hzk3X833H+32WwiSWoUwclCqua4HgCUAjcZSyRNTb9gSU1lZRw2uD+ZK1eEX7qR
-4CUyETHrXmB8RP9G4ElDWaTp6QxZqnm9tPzTYFI/+Sj80lBggrFAIrK/OwiOtB4S6v8FKDYXR5qQ
-zpAlyOcj87Ybcb3/XvilB4FnzCUSkYMIEJyU5/WI1/4GHD1JvzrHOxVkgZISWl4/CPec2eGXtg65
-nlyDkUSkdj6CC1HMjXjt2OfHkf7PUcEpbiUuqSAnOfv2bbS66jJc71b/0y698RY233ybwVQiEk0F
-0Jvq2bwAWjz1OJk3Xw8ej6FU0hgqyEnMsWolrbpfSMqKr8Kvld72Z0oeeQxsWl9GxOrKgZ7UXEfZ
-/fYsWvW6HNuOHYZSSUOpICep1AXv0arHJTh+2AoEnzMuevxpSkY+omIsEkdKCBbl7b37hV9LWfYl
-rS+7CEfo0UWJDyrISSjtpedoOSgHe0lwbKY/syV7Z7xJ2eDrDCcTkYbwAR/36ceGu+4hYA9+rDs2
-baTlpRfy04wp+Hya7DYe6LGnZFJRQcbwB0h75cXwS75jjmXvtDfw/erXBoOJSGP169cLCC7TmAdk
-As6SEk4Yejubtmwh8+77dfXL4lSQE4DP56OgYH2t29u1a0/q2jVk3nEzKRETflR0OZ29k/IItG3b
-HDFFpBnMA84jOAL7GIIf8u3/lUv56lUU/espAllZRvNJ7VSQE0BBwXqys7scdJsdWH/7UI546Tls
-Xm/49bIrr6bo389DWlozpRSR5vI1cBbwDlD1yeCa9w4pny+l6F9P4728h7lwUisV5ATWnuAE9MeN
-ezr8WsDlouSB4XhuuR1fIEBB/rqDvlcLSIjEt23A74DHgVtDr9l/+onDrhtAWZ8civ85hsBhrcwF
-lAOoICeomwn+Q8yIeK34xF+RP3wUnvYdYEM+mzZtDN93EpHEUwrcBpz/5L/p+Ng/cWzfBoD7jTxS
-lnxC0VPjqDj/QqMZpZoKcoI5BXgC+EPEa5XAI8DoNd9ROaCvkVwiYs7es8+h8OPPyHjgHtxvBifd
-dPywlVZ9r8IzcAil9z2E/4gjDacUFeQEcSzB5dkGUfNZttXAYIKLnItI8gq0ak3Rcy9TflkPMu/9
-C/ZduwBImzoJ95uvU3rz7XjuGEqg5WHh99RnwKjD4Yh59mShghznbLt2cdzTY1kLuCJe9wNjCU46
-X24kmYhYkbdHT3aflU3m3UNxvRec48vm8dDiqcdJm/QKpUPvxnP9jeB21zlgFGDp0mV06HBCc0VP
-eJoYJF6VlJD+5L9oc2YnjsqbVqMYzwVOJbiQuYqxiOwv0LYt+yZNZ0/eLCpO+W34dXthIRkjH6JN
-dmdcedNAE4o0K50hxxlH/jrcEyfgzpuGfe+eGtv+D7gP+NRIMhGJKzYbFRdezJ7zL8T11pu0yP0H
-jo0FADi2bqHln2/ltCOP4j6Ca6LvNJk1SaggW0Sd92oqK2m95BPazfsPro8XHbC5tN3xXFuwgbdj
-nFFE4lO0xxjb9exF+RU9cU95lRZPjMH+U7D8urZv41HgYeANYDywNNZhk5gtEAgEmvub7txZ1Nzf
-stlkZWU26Pjy89cdcK/mGIKDtG4mOGhrf77j2lH6l7tZffoZZHc9qyFxRURq3Au2FReR9vw40l5+
-Hvvu3Qfsuxx4jmCBnlfLPeSGDAZr6GdnvMjKyoy6j86QLeZk4GrgKqpn2IkUsNspPLcrP17dm71n
-nQ12uybxEJFGOeAz5OprsF12BbyRh3/cM2RHbDoVeAEYB5TccQv23n3xdr8c/89/Ed5Hg8EaRmfI
-TeyQf8urqMD5v2V4ZkyhdPoUflnLbjuAl4AXgU2NjykiUm+nEZztawCQXss+FaeehvfSKyjvfjlr
-U5xkn3N6rV/vYAVZZ8gqyE2urh8qn8/HptUryVy9kswVy8lcsZyM1StxlJUddH8v8AEwBXgz1BcR
-MeUwYAiQAzXOmvdXcdhhzNu7l08JDjJdBlREbFdBPjhdso4hW9E+HN99i/O7b3F+swrfpx/TZc13
-1PUYfRHB1Vpmh/6buD+eIhJv9gLPhP4cBXx6zwP84ov/kvLpx9gqK8P7pezdS0+gZ6jvAf4b+rMS
-2PfxR6wvLyfgqn5gs7Awg927i5N6shGdITch52dLab3kQ8r/txznd9/i2Fy/i8sbgIUEi/AH6ExY
-ROLDa6/N4thjj8NRVESr//uUNh9/RMv/fUnKnj1R31sJrANWhf7MCPUT9f5yk1yyDgQCjBw5kjVr
-1pCamsro0aM55phjwts//PBDxo8fj9Pp5JprrqFPnz5Rv2k8FORDHSWYsngRrfr0rHX/Kn6CS6N9
-GvFna2PDiohYyIkE12Su+lPb2JhI5QSfJnk7BgXZClOANskl64ULF+L1esnLy2PFihXk5uYyfvx4
-ACorK3n00UeZNWsWLpeL/v37c9FFF9GmTZvGpzfsUEcJ2vbtPWCfgNOJ74SOVP7q1/h+dRKbs7I4
-664/sy8miUVErGFN6M8rof6RwLlAJ+A3BBfBaU/NqSIdQCZ1PzPt8/kAGw7HwSeZrK2wxsuo76gF
-edmyZXTt2hWATp06sWrVqvC2/Px8jjvuODIygov8denShS+++IJLLrkkRnEP3cKF77O5lkvHxx7b
-josuurhJvo/3ip7se+Y5MnZsJT81ndIOv6TsmGMJpKSE99m0aaOKsYgkne0EB6a+GfFaOvBrgsW5
-A7AEyIdGLQlbdQl9f/HyaGjUglxcXExmZvWpttPpxO/3Y7fbD9jWokULioqsdTl6ypSJfPvt6oNu
-O/nk39Cu3YF/eRD9L/Cg2884k717d9K9e/dDzikikkxKCY6+XtaEXzPe13ePWpAzMjIoKSkJ96uK
-cdW24uLi8LaSkhJatmwZ9ZvW51p6U5k3750Gve/sszvTt2/DxrsZGCcnIiJxLupqT507d2bx4sUA
-LF++nI4dO4a3dejQgY0bN7Jv3z68Xi9ffPEFp556auzSioiIJKhDGmUNkJuby+rVq/F4PPTp04eP
-PvqIZ599lkAgQO/evenfv3+zBBcREUkkRp5DFhERkZqiXrIWERGR2FNBFhERsQAVZBEREQtQQRYR
-EbEAYwU5Pz+f008/Ha83sZZS8Hg83HbbbQwcOJDrr7+eHTt2mI7UpIqLi7nlllsYNGgQOTk5LF++
-3HSkJrdgwQKGDRtmOkaTCQQCjBgxgpycHAYPHszmzZtNR4qJFStWMGjQINMxmlRlZSX33nsvAwYM
-oG/fvnz44YemIzUpv9/Pgw8+SP/+/RkwYADff/+96UgxsWvXLs4//3w2bNhQ535GCnJxcTFjxozB
-FbH0VqJ4/fXXOeWUU5g6dSo9evTgpZdeMh2pSb366qucc845TJkyhdzcXEaNGmU6UpMaPXo0Tz75
-pOkYTSpyPvphw4aRm5trOlKTe/nll/nb3/5GRUVF9J3jyJw5c2jdujXTpk3jpZde4h//+IfpSE3q
-ww8/xGazMWPGDIYOHcrYsWNNR2pylZWVjBgxArfbHXVfIwV5+PDh3HXXXfUKGG+GDBnCrbfeCsAP
-P/zAYYcdZjhR07ruuuvIyckBgj9oifZLVefOnRk5cqTpGE2qrvnoE8Vxxx3HuHHjTMdocpdeeilD
-hw4FgmeTTmdiLWF/8cUXh3/J2Lp1a8J9XgI89thj9O/fn7Zt20bdN6Z/uzNnzmTSpEk1Xjv66KO5
-/PLLOfHEE+N+ismDHV9ubi6nnHIKQ4YMYd26dUyYMMFQusar6/h27tzJvffey0MPPWQoXePUdmyX
-Xnopn3/+uaFUsVHXfPSJolu3bmzdmngLmaalpQHBv8OhQ4fy17/+1XCipme327n//vtZuHAhzzzz
-jOk4TWrWrFkcfvjhnHvuuTz//PNR92/2iUEuueQSjjjiCAKBACtWrKBTp05MmTKlOSM0m/Xr13Pz
-zTezYMEC01Ga1Jo1a7j77ru57777OO+880zHaXKff/45r732Gk888YTpKE3i0Ucf5dRTTw0venL+
-+efz0UcfmQ0VA1u3bmXYsGHk5eWZjtKktm3bxh133MHAgQO5+uqrTceJmV27dtGnTx/mzZuXMFdP
-Bw4ciM1mA+C7777j+OOP57nnnuPwww8/6P7Nfv1j/vz54faFF14Y12eQB/Piiy9yxBFH0LNnT9LT
-02O+6HVz+/777/nLX/7CU089xYknnmg6jtRD586dWbRoEd27dz9gPvpEE+9X3fb3008/ccMNNzB8
-+HDOPvts03Ga3Ntvv82PP/7ITTfdhMvlwm63J9SVm6lTp4bbgwYNYtSoUbUWYzBQkCPZbLaE+wd0
-zTXXcN999zFz5kwCgUDCDaAZO3YsXq+X0aNHEwgEaNmyZULeu0sk3bp1Y8mSJeF7/4n2Mxmp6mwk
-Ubzwwgvs27eP8ePHM27cOGw2Gy+//DKpqammozWJP/zhDzzwwAMMHDiQyspKHnrooYQ5tv3V52dT
-c1mLiIhYQOJcGxAREYljKsgiIiIWoIIsIiJiASrIIiIiFqCCLCIiYgEqyCIiIhaggiwiImIB/w/O
-sAMIBNfSPgAAAABJRU5ErkJggg==
-"
->
 </div>
-
-</div>
-
-</div>
-</div>
-
-</div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Teaching-computational-science">Teaching computational science<a class="anchor-link" href="#Teaching-computational-science">&#182;</a></h1>
-</div>
-</div>
-</div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>Fast code iteration</li>
-</ul>
-
-</div>
-</div>
-</div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>Inline plots</li>
-</ul>
-
-</div>
-</div>
-</div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>Interactive visualization</li>
-</ul>
-
-</div>
-</div>
-</div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>Cross-platform</li>
-</ul>
-
-</div>
-</div>
-</div></div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Notebooks-as-assignments">Notebooks as assignments<a class="anchor-link" href="#Notebooks-as-assignments">&#182;</a></h1>
-</div>
-</div>
-</div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li><a href="https://github.com/barbagroup/CFDPython">12 Steps to Navier-Stokes</a> (Lorena Barba)</li>
-</ul>
-
-</div>
-</div>
-</div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li><a href="https://github.com/gregcaporaso/An-Introduction-To-Applied-Bioinformatics">Intro to Applied Bioinformatics</a> (Greg Caporaso)</li>
-</ul>
-
-</div>
-</div>
-</div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li><a href="http://jckantor.github.io/CBE20255/">Chemical Engineering Analysis</a> (Jeffrey Kantor)</li>
-</ul>
-
-</div>
-</div>
-</div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>and many more!</li>
-</ul>
-
-</div>
-</div>
-</div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><a href="example/Assignment.html" target="new">Example Assignment</a></p>
-
-</div>
-</div>
-</div></div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Issues">Issues<a class="anchor-link" href="#Issues">&#182;</a></h1>
-</div>
-</div>
-</div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>Instructor and student versions</li>
-</ul>
-
-</div>
-</div>
-</div></div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Instructor">Instructor<a class="anchor-link" href="#Instructor">&#182;</a></h1><p>Write code to compute the mean error between two arrays:</p>
+<p>As a quick refresher, Python sets are <strong>unique, unordered collections</strong> of objects. You can check if an item is in a set with the <code>in</code> keyword:</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">error</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">y</span><span class="p">))</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="s1">&#39;a&#39;</span> <span class="ow">in</span> <span class="n">example_belief</span>
 </pre></div>
 
 </div>
 </div>
 </div>
 
-</div></section></section><section><section>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="s1">&#39;c&#39;</span> <span class="ow">in</span> <span class="n">example_belief</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Student">Student<a class="anchor-link" href="#Student">&#182;</a></h1><p>Write code to compute the mean squared error between two arrays:</p>
+<p>You can add new things to the set using the <code>.add()</code> method, for example:</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">error</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">example_belief</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;c&#39;</span><span class="p">)</span>
+<span class="n">example_belief</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>So, our beliefs will be represented using sets, and we will represent the rules of our production system using a list of 2-tuples. Each tuple contains a <em>condition</em> and a <em>result</em>. The rule can be applied if the condition is present in the set of beliefs; if the rule is applied, then the result should be added to the set of beliefs. For example, the following belief again consists of <code>'a'</code> and <code>'b'</code>, and the rules state that "if a, then b" and that "if c, then d":</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">example_belief</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">}</span>
+<span class="n">example_rules</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">)]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>To help visualize the rules a bit better, here is a function called <code>print_rules</code> that will print out each rule on a separate line:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">print_rules</span><span class="p">(</span><span class="n">rules</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">rule</span> <span class="ow">in</span> <span class="n">rules</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">rule</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">+</span> <span class="s2">&quot; --&gt; &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">rule</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">print_rules</span><span class="p">(</span><span class="n">example_rules</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="alert alert-success">Using the representation of beliefs and rules specified above, write a function called <code>match</code> that searches through a given list of rules to find a rule that is triggered by the given set of beliefs.</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">match</span><span class="p">(</span><span class="n">belief</span><span class="p">,</span> <span class="n">rules</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Determine whether a rule is triggered by the given set of beliefs.</span>
+
+<span class="sd">    The *first* rule in the list of rules that is triggered should be</span>
+<span class="sd">    returned (and you should only ever return one rule, even if multiple are</span>
+<span class="sd">    triggered). If no rule is triggered, None should be returned.</span>
+
+<span class="sd">    A rule should only be triggered if it adds something new to the set of </span>
+<span class="sd">    beliefs: for example, if the beliefs are `{&#39;a&#39;, &#39;b&#39;}`, and there is only </span>
+<span class="sd">    one rule, `(&#39;a&#39;, &#39;b&#39;)`, then it should not be triggered because it </span>
+<span class="sd">    doesn&#39;t add anything new. If the beliefs were just `{&#39;a&#39;}`, however, then </span>
+<span class="sd">    the rule *should* be triggered because it would add `b` to the set of </span>
+<span class="sd">    beliefs.</span>
+
+<span class="sd">    Hint: you should be able to do this in four lines of code (or less),</span>
+<span class="sd">    including the return statement.</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    belief : set</span>
+<span class="sd">        A set of true propositions.</span>
+<span class="sd">    rules : list of tuples</span>
+<span class="sd">        A list of tuples, such that for each tuple, the first element implies</span>
+<span class="sd">        the second (but not vice versa).</span>
+<span class="sd">        </span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    The first rule (tuple) that was triggered, or None if no rules were triggered.</span>
+<span class="sd">    </span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># YOUR CODE HERE</span>
-    <span class="k">raise</span> <span class="ne">NotImplementedError</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
 </pre></div>
 
 </div>
 </div>
 </div>
 
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Issues">Issues<a class="anchor-link" href="#Issues">&#182;</a></h1>
-</div>
-</div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>Instructor and student versions</li>
-</ul>
-
-</div>
-</div>
-</div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>Renamed and missing files</li>
-</ul>
-
-</div>
-</div>
-</div></div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Original">Original<a class="anchor-link" href="#Original">&#182;</a></h1>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-
-<pre><code>$ ls ps1/
-
-Problem 1.ipynb
-Problem 2.ipynb</code></pre>
-
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Submitted">Submitted<a class="anchor-link" href="#Submitted">&#182;</a></h1>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-
-<pre><code>$ ls ps1/
-
-problem 1.ipynb
-Problem 2 Copy.ipynb</code></pre>
-
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Issues">Issues<a class="anchor-link" href="#Issues">&#182;</a></h1>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>Instructor and student versions</li>
-</ul>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>Renamed and missing files</li>
-</ul>
-
-</div>
-</div>
-</div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>What should/should not be autograded</li>
-</ul>
-
-</div>
-</div>
-</div></div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="What-should-be-graded?">What should be graded?<a class="anchor-link" href="#What-should-be-graded?">&#182;</a></h1>
-</div>
-</div>
-</div><div class="fragment">
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">error</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">y</span><span class="p">))</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div></div><div class="fragment">
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">error</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">error</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]))</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_text output_error">
-<pre>
-<span class="ansicyan">  File </span><span class="ansigreen">&quot;&lt;ipython-input-6-2b19b0758384&gt;&quot;</span><span class="ansicyan">, line </span><span class="ansigreen">2</span>
-<span class="ansired">    print(error(np.array([1, 2]), np.array([3, 4]))</span>
-                                                   ^
-<span class="ansired">SyntaxError</span><span class="ansired">:</span> unexpected EOF while parsing
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div></div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Issues">Issues<a class="anchor-link" href="#Issues">&#182;</a></h1>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>Instructor and student versions</li>
-</ul>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>Renamed and missing files</li>
-</ul>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>What should and should not be autograded?</li>
-</ul>
-
-</div>
-</div>
-</div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>Grading code and written answers together</li>
-</ul>
-
-</div>
-</div>
-</div></div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Grading-written-answers">Grading written answers<a class="anchor-link" href="#Grading-written-answers">&#182;</a></h1>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Run your <code>error</code> code on the ouput of the two models:</p>
+<p>Check that your function behaves as expected, based on the example given above:</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Model 1: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">error</span><span class="p">(</span><span class="n">model1</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">y</span><span class="p">)))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Model 2: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">error</span><span class="p">(</span><span class="n">model2</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">y</span><span class="p">)))</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">match</span><span class="p">({</span><span class="s1">&#39;a&#39;</span><span class="p">},</span> <span class="p">[(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">)]))</span> <span class="c1"># should print (&#39;a&#39;, &#39;b&#39;)</span>
 </pre></div>
 
 </div>
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Model 1: 5.692703597805511
-Model 2: 0.02898058018268955
-</pre>
 </div>
-</div>
-
-</div>
-</div>
-
-</div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Explain why the models have different error rates.</p>
-<p><em>YOUR ANSWER HERE</em></p>
-
-</div>
-</div>
-</div></div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Issues">Issues<a class="anchor-link" href="#Issues">&#182;</a></h1>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>Instructor and student versions</li>
-</ul>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">match</span><span class="p">({</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">},</span> <span class="p">[(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">)]))</span> <span class="c1"># should print None</span>
+</pre></div>
 
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+
 </div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>Renamed and missing files</li>
-</ul>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># add your own test cases here!</span>
+</pre></div>
 
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+
 </div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>What should and should not be autograded?</li>
-</ul>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">nose.tools</span> <span class="k">import</span> <span class="n">assert_equal</span>
+
+<span class="c1"># check that a --&gt; b is triggered</span>
+<span class="n">assert_equal</span><span class="p">(</span><span class="n">match</span><span class="p">({</span><span class="s1">&#39;a&#39;</span><span class="p">},</span> <span class="p">[(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">)]),</span> <span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">))</span>
+
+<span class="c1"># check that nothing is triggered, because &#39;b&#39; does not trigger any rules</span>
+<span class="n">assert_equal</span><span class="p">(</span><span class="n">match</span><span class="p">({</span><span class="s1">&#39;b&#39;</span><span class="p">},</span> <span class="p">[(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">)]),</span> <span class="kc">None</span><span class="p">)</span>
+
+<span class="c1"># check that nothing is triggered, because &#39;a&#39; and &#39;b&#39; are already in the belief</span>
+<span class="n">assert_equal</span><span class="p">(</span><span class="n">match</span><span class="p">({</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">},</span> <span class="p">[(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">)]),</span> <span class="kc">None</span><span class="p">)</span>
+
+<span class="c1"># check that a --&gt; b is triggered</span>
+<span class="n">assert_equal</span><span class="p">(</span><span class="n">match</span><span class="p">({</span><span class="s1">&#39;a&#39;</span><span class="p">},</span> <span class="p">[(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">)]),</span> <span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">))</span>
+
+<span class="c1"># check that b --&gt; c is triggered</span>
+<span class="n">assert_equal</span><span class="p">(</span><span class="n">match</span><span class="p">({</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">},</span> <span class="p">[(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">)]),</span> <span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">))</span>
+
+<span class="c1"># check that nothing is triggered, because &#39;a&#39;, &#39;b&#39;, and &#39;c&#39; are already in the belief</span>
+<span class="n">assert_equal</span><span class="p">(</span><span class="n">match</span><span class="p">({</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">},</span> <span class="p">[(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">)]),</span> <span class="kc">None</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Success!&quot;</span><span class="p">)</span>
+</pre></div>
 
 </div>
 </div>
+</div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>Grading code and written answers together</li>
-</ul>
-
-</div>
-</div>
-</div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>Students changing support code or tests</li>
-</ul>
-
-</div>
-</div>
-</div></div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Meet-nbgrader!">Meet nbgrader!<a class="anchor-link" href="#Meet-nbgrader!">&#182;</a></h1>
+<h2 id="Part-B-(1.5-points)">Part B (1.5 points)<a class="anchor-link" href="#Part-B-(1.5-points)">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -1189,7 +487,13 @@ Model 2: 0.02898058018268955
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3><a href="http://tinyurl.com/nbgrader-demo" target="new">http://tinyurl.com/nbgrader-demo</a></h3>
+<p>Now that we have a way to trigger rules based on a set of beliefs, we want to engage in a process called <a href="http://en.wikipedia.org/wiki/Forward_chaining">forward chaining</a>. The idea behind forward chaining is that we want execute rules that are triggered by our beliefs, and to continue triggering rules until no more can be triggered. For example, if we have:</p>
+<div class="highlight"><pre><span></span><span class="n">rules</span> <span class="o">=</span> <span class="p">[(</span><span class="s2">&quot;belief1&quot;</span><span class="p">,</span> <span class="s2">&quot;belief2&quot;</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;belief2&quot;</span><span class="p">,</span> <span class="s2">&quot;belief3&quot;</span><span class="p">)]</span>
+<span class="n">belief</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;belief1&quot;</span><span class="p">}</span>
+</pre></div>
+<p>To start out, we have <code>belief_1</code>, but we also have a rule "if <code>belief_1</code>, then <code>belief_2</code>". So, we should update our belief with <code>belief_2</code>.</p>
+<p>Then, we have <em>another</em> rule that says "if <code>belief_2</code>, then <code>belief_3</code>". Because our belief now consists of both <code>belief_1</code> and <code>belief_2</code> (due to triggering the first rule), this second rule should also be triggered, and should add <code>belief_3</code> to our total set of beliefs.</p>
+
 </div>
 </div>
 </div>
@@ -1198,67 +502,504 @@ Model 2: 0.02898058018268955
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><a href="http://mybinder.org/repo/jhamrick/nbgrader-demo" target="new"><img src="http://mybinder.org/badge.svg" /></a></p>
+<div class="alert alert-success">Write a function, <code>forward_chain</code>, to automatically perform forward chaining using a given set of initial beliefs and rules.</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">forward_chain</span><span class="p">(</span><span class="n">belief</span><span class="p">,</span> <span class="n">rules</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Fully execute a set of given rules that match a given belief, until</span>
+<span class="sd">    no more new rules are triggered. Returns a new set of beliefs (without</span>
+<span class="sd">    changing the original set of beliefs) based on which rules were</span>
+<span class="sd">    triggered.</span>
+
+<span class="sd">    Note: this function should call the `match` function you implemented</span>
+<span class="sd">    in the first part of this problem.</span>
+
+<span class="sd">    Hint: you should be able to do this in 8 lines of code, including the</span>
+<span class="sd">    return statement.</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    belief : set</span>
+<span class="sd">        A set of true propositions.</span>
+<span class="sd">    rules : list of tuples</span>
+<span class="sd">        A list of tuples, such that for each tuple, the first element implies</span>
+<span class="sd">        the second (but not vice versa).</span>
+<span class="sd">        </span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    tuple of (new_belief, triggered_rules):</span>
+<span class="sd">        new_belief is an updated set of true propositions, and triggered_rules</span>
+<span class="sd">        is the list of rules that were triggered, in order.</span>
+<span class="sd">        </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># YOUR CODE HERE</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+</pre></div>
 
 </div>
 </div>
-</div></section></section>
-</div>
 </div>
 
-<script>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Make sure your function does in fact perform full forward chaining -- if there are two matching rules, but only one matches at the beginning, they should still both be triggered:</p>
 
-require(
-    {
-      // it makes sense to wait a little bit when you are loading
-      // reveal from a cdn in a slow connection environment
-      waitSeconds: 15
-    },
-    [
-      "reveal.js/lib/js/head.min.js",
-      "reveal.js/js/reveal.js"
-    ],
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">b</span><span class="p">,</span> <span class="n">r</span> <span class="o">=</span> <span class="n">forward_chain</span><span class="p">({</span><span class="s1">&#39;a&#39;</span><span class="p">},</span> <span class="p">[(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">)])</span>
+<span class="n">print_rules</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="c1"># should print both &#39;a --&gt; b&#39; and &#39;b --&gt; c&#39;</span>
+<span class="n">b</span>              <span class="c1"># should be {&#39;a&#39;, &#39;b&#39;, &#39;c&#39;}</span>
+</pre></div>
 
-    function(head, Reveal){
+</div>
+</div>
+</div>
 
-        // Full list of configuration options available here: https://github.com/hakimel/reveal.js#configuration
-        Reveal.initialize({
-            controls: true,
-            progress: false,
-            history: true,
-            theme: 'simple',
-            transition: 'none',
-            center: false,
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># add your own test cases here!</span>
+</pre></div>
 
-            // Optional libraries used to extend on reveal.js
-            dependencies: [
-                { src: "reveal.js/lib/js/classList.js",
-                  condition: function() { return !document.body.classList; } },
-                { src: "reveal.js/plugin/notes/notes.js",
-                  async: true,
-                  condition: function() { return !!document.body.classList; } }
-            ]
-        });
+</div>
+</div>
+</div>
 
-        var update = function(event){
-          if(MathJax.Hub.getAllJax(Reveal.getCurrentSlide())){
-            MathJax.Hub.Rerender(Reveal.getCurrentSlide());
-          }
-        };
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="sd">&quot;&quot;&quot;Check that `forward_chain` uses the `match` function.&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">nose.tools</span> <span class="k">import</span> <span class="n">assert_raises</span>
+<span class="n">orig_match</span> <span class="o">=</span> <span class="n">match</span>
+<span class="k">del</span> <span class="n">match</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">assert_raises</span><span class="p">(</span><span class="ne">NameError</span><span class="p">,</span> <span class="n">forward_chain</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">},</span> <span class="p">[(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">)])</span>
+<span class="k">finally</span><span class="p">:</span>
+    <span class="n">match</span> <span class="o">=</span> <span class="n">orig_match</span>
 
-        Reveal.addEventListener('slidechanged', update);
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Success!&quot;</span><span class="p">)</span>
+</pre></div>
 
-        var update_scroll = function(event){
-          $(".reveal").scrollTop(0);
-        };
+</div>
+</div>
+</div>
 
-        Reveal.addEventListener('slidechanged', update_scroll);
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="sd">&quot;&quot;&quot;Ensure that the new belief is a different object from the original belief.&quot;&quot;&quot;</span>
+<span class="n">b1</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">}</span>
+<span class="n">b2</span> <span class="o">=</span> <span class="n">forward_chain</span><span class="p">(</span><span class="n">b1</span><span class="p">,</span> <span class="p">[(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">)])</span>
+<span class="n">assert_equal</span><span class="p">(</span><span class="n">b1</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">})</span>
+<span class="n">assert_equal</span><span class="p">(</span><span class="n">b2</span><span class="p">,</span> <span class="p">({</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">},</span> <span class="p">[(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">)]))</span>
 
-    }
-);
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Success!&quot;</span><span class="p">)</span>
+</pre></div>
 
-</script>
+</div>
+</div>
+</div>
 
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="sd">&quot;&quot;&quot;Check that full forward chaining works.&quot;&quot;&quot;</span>
+<span class="n">b</span><span class="p">,</span> <span class="n">r</span> <span class="o">=</span> <span class="n">forward_chain</span><span class="p">({</span><span class="s1">&#39;a&#39;</span><span class="p">},</span> <span class="p">[(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">)])</span>
+<span class="n">assert_equal</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">})</span>
+<span class="n">assert_equal</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="p">[(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">)])</span>
+
+<span class="n">b</span><span class="p">,</span> <span class="n">r</span> <span class="o">=</span> <span class="n">forward_chain</span><span class="p">({</span><span class="s1">&#39;a&#39;</span><span class="p">},</span> <span class="p">[(</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">)])</span>
+<span class="n">assert_equal</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">})</span>
+<span class="n">assert_equal</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="p">[(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">)])</span>
+
+<span class="n">b</span><span class="p">,</span> <span class="n">r</span> <span class="o">=</span> <span class="n">forward_chain</span><span class="p">({</span><span class="s1">&#39;a&#39;</span><span class="p">},</span> <span class="p">[(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">)])</span>
+<span class="n">assert_equal</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">})</span>
+<span class="n">assert_equal</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="p">[(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">)])</span>
+
+<span class="n">b</span><span class="p">,</span> <span class="n">r</span> <span class="o">=</span> <span class="n">forward_chain</span><span class="p">({</span><span class="s1">&#39;b&#39;</span><span class="p">},</span> <span class="p">[(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">)])</span>
+<span class="n">assert_equal</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">})</span>
+<span class="n">assert_equal</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="p">[(</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">)])</span>
+
+<span class="n">b</span><span class="p">,</span> <span class="n">r</span> <span class="o">=</span> <span class="n">forward_chain</span><span class="p">({</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">},</span> <span class="p">[(</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">)])</span>
+<span class="n">assert_equal</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">})</span>
+<span class="n">assert_equal</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="p">[])</span>
+
+<span class="n">b</span><span class="p">,</span> <span class="n">r</span> <span class="o">=</span> <span class="n">forward_chain</span><span class="p">(</span><span class="nb">set</span><span class="p">(),</span> <span class="p">[(</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">)])</span>
+<span class="n">assert_equal</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="nb">set</span><span class="p">())</span>
+<span class="n">assert_equal</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="p">[])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Success!&quot;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Part-C-(0.5-points)">Part C (0.5 points)<a class="anchor-link" href="#Part-C-(0.5-points)">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Imagine you have a small sprinkler that can water your grass, but does not reach the path you walk on, or your car. However, if it rains, then the car and the path both get wet. The sprinkler definitely comes on if the appropriate switch is flipped. We might try to capture this information in a production system as follows:</p>
+
+<pre><code>IF switch is flipped THEN sprinkler is on
+IF sprinkler is on THEN grass is wet
+IF it is raining THEN car is wet
+IF it is raining THEN path is slippery
+IF it is raining THEN grass is wet
+
+</code></pre>
+<p>Or, in Python:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">rules_1</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s1">&#39;switch is flipped&#39;</span><span class="p">,</span> <span class="s1">&#39;sprinkler is on&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;sprinkler is on&#39;</span><span class="p">,</span> <span class="s1">&#39;grass is wet&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;it is raining&#39;</span><span class="p">,</span> <span class="s1">&#39;car is wet&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;it is raining&#39;</span><span class="p">,</span> <span class="s1">&#39;path is slippery&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;it is raining&#39;</span><span class="p">,</span> <span class="s1">&#39;grass is wet&#39;</span><span class="p">)</span>
+<span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>If you knew that the switch was flipped (but nothing else), what would you conclude about the states of the sprinkler, grass, car, and the path? Use your <code>forward_chain</code> function to find out:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># perform forward chaining on the belief that &#39;switch is flipped&#39;</span>
+<span class="n">belief_1</span><span class="p">,</span> <span class="n">triggered_rules_1</span> <span class="o">=</span> <span class="n">forward_chain</span><span class="p">({</span><span class="s1">&#39;switch is flipped&#39;</span><span class="p">},</span> <span class="n">rules_1</span><span class="p">)</span>
+
+<span class="c1"># print which rules were triggered</span>
+<span class="n">print_rules</span><span class="p">(</span><span class="n">triggered_rules_1</span><span class="p">)</span>
+
+<span class="c1"># show the final belief</span>
+<span class="n">belief_1</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="alert alert-success">
+In words, what is your belief about the state of the grass? What is your belief about the state of the car?
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>YOUR ANSWER HERE</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Part-D-(0.5-points)">Part D (0.5 points)<a class="anchor-link" href="#Part-D-(0.5-points)">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>These rules only seem to tell part of the story. We should be able to make other inferences too. For example, if the sprinkler came on, the switch must have been flipped. We could imagine defining another production system, with a completely different set of rules getting at this:</p>
+
+<pre><code>IF sprinkler is on THEN switch is flipped
+IF car is wet THEN it is raining
+IF path is slippery THEN it is raining
+IF grass is wet THEN it is raining
+
+</code></pre>
+<p>Or, in Python:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">rules_2</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s1">&#39;sprinkler is on&#39;</span><span class="p">,</span> <span class="s1">&#39;switch is flipped&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;car is wet&#39;</span><span class="p">,</span> <span class="s1">&#39;it is raining&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;path is slippery&#39;</span><span class="p">,</span> <span class="s1">&#39;it is raining&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;grass is wet&#39;</span><span class="p">,</span> <span class="s1">&#39;it is raining&#39;</span><span class="p">)</span>
+<span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>If you knew only that the grass was wet, what would you conclude? Again, you can use your <code>forward_chain</code> function to find out:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># perform forward chaining on the belief that &#39;path is slippery&#39;</span>
+<span class="n">belief_2</span><span class="p">,</span> <span class="n">triggered_rules_2</span> <span class="o">=</span> <span class="n">forward_chain</span><span class="p">({</span><span class="s1">&#39;grass is wet&#39;</span><span class="p">},</span> <span class="n">rules_2</span><span class="p">)</span>
+
+<span class="c1"># print which rules were triggered</span>
+<span class="n">print_rules</span><span class="p">(</span><span class="n">triggered_rules_2</span><span class="p">)</span>
+
+<span class="c1"># show the final belief</span>
+<span class="n">belief_2</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="alert alert-success">
+What conclusion(s) do you draw? Intuitively, do they seem like valid or reasonable inferences to make? Explain.
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>YOUR ANSWER HERE</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Part-E-(1.5-points)">Part E (1.5 points)<a class="anchor-link" href="#Part-E-(1.5-points)">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The previous set of rules is still unsatisfying, though: if we know it is raining, we should be able to draw further conclusions, but those rules do not allow us to do that. To try to get around that, let's try combining both sets of rules:</p>
+
+<pre><code>IF switch is flipped THEN sprinkler is on
+IF sprinkler is on THEN grass is wet
+IF it is raining THEN car is wet
+IF it is raining THEN path is slippery
+IF it is raining THEN grass is wet
+IF sprinkler is on THEN switch is flipped
+IF car is wet THEN it is raining
+IF path is slippery THEN it is raining
+IF grass is wet THEN it is raining
+
+</code></pre>
+<p>If you observed <code>sprinkler was on</code>, what would you conclude? You can again use <code>forward_chain</code>:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># perform forward chaining on the belief that &#39;sprinkler is on&#39;</span>
+<span class="n">belief_3</span><span class="p">,</span> <span class="n">triggered_rules_3</span> <span class="o">=</span> <span class="n">forward_chain</span><span class="p">({</span><span class="s1">&#39;sprinkler is on&#39;</span><span class="p">},</span> <span class="n">rules_1</span> <span class="o">+</span> <span class="n">rules_2</span><span class="p">)</span>
+
+<span class="c1"># print which rules were triggered</span>
+<span class="n">print_rules</span><span class="p">(</span><span class="n">triggered_rules_3</span><span class="p">)</span>
+
+<span class="c1"># show the final belief</span>
+<span class="n">belief_3</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="alert alert-success">
+Do these conclusions match your intuitions about what inferences should or should not be valid? Explain your reasoning.
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>YOUR ANSWER HERE</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="alert alert-success">
+What does this tell us about the limitations of production systems?
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>YOUR ANSWER HERE</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Before turning this problem in remember to do the following steps:</p>
+<ol>
+<li><strong>Restart the kernel</strong> (Kernel$\rightarrow$Restart)</li>
+<li><strong>Run all cells</strong> (Cell$\rightarrow$Run All)</li>
+<li><strong>Save</strong> (File$\rightarrow$Save and Checkpoint)</li>
+</ol>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="alert alert-danger">After you have completed these three steps, ensure that the following cell has printed "No errors". If it has <b>not</b> printed "No errors", then your code has a bug in it and has thrown an error! Make sure you fix this error before turning in your problem set.</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;No errors!&quot;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+    </div>
+  </div>
 </body>
-
 </html>
